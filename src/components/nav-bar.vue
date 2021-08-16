@@ -11,6 +11,10 @@ export default {
           name: 'home',
           title: 'Home',
         },
+        {
+          name: 'applications-index',
+          title: 'Applications',
+        },
       ],
       loggedInNavRoutes: [
         {

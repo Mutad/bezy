@@ -24,6 +24,31 @@ export default [
     },
   },
   {
+    path: '/applications',
+    name: 'applications-index',
+    component: () => lazyLoadView(import('@views/applications.vue')),
+  },
+  {
+    path: '/applications/:id',
+    name: 'applications-single',
+    component: () => lazyLoadView(import('@views/application.vue')),
+  },
+  {
+    path: '/pages/:id',
+    name: 'pages-single',
+    component: () => lazyLoadView(import('@views/page.vue')),
+  },
+  {
+    path: '/consumers/:id',
+    name: 'consumers-single',
+    component: () => lazyLoadView(import('@views/consumer.vue')),
+  },
+  {
+    path: '/blocks/:id',
+    name: 'blocks-single',
+    component: () => lazyLoadView(import('@views/block.vue')),
+  },
+  {
     path: '/profile',
     name: 'profile',
     component: () => lazyLoadView(import('@views/profile.vue')),

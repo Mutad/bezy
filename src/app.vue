@@ -1,7 +1,127 @@
 <script>
 import appConfig from '@src/app.config'
+import Application from './state/models/Application'
+import Component from './state/models/Component'
+import Block from './state/models/Block'
 
 export default {
+  mounted() {
+    const data = [
+      {
+        id: 1,
+        name: 'News application',
+        pages: [
+          {
+            id: 1,
+            name: 'Page 1',
+            application_id: 1,
+            blocks_pages: [
+              { id: 1, block_id: 1, order: 1 },
+              { id: 2, block_id: 2, order: 2 },
+              { id: 3, block_id: 3, order: 3 },
+            ],
+          },
+          { id: 2, name: 'Page 2', application_id: 1 },
+        ],
+        consumers: [
+          {
+            id: 1,
+            name: 'news api',
+            lang: 'json',
+            application_id: 1,
+            url: 'https://api.spaceflightnewsapi.net/',
+            endpoints: [
+              {
+                id: 1,
+                path: '/v3/articles',
+              },
+              {
+                id: 2,
+                path: '/v3/reports',
+              },
+            ],
+          },
+        ],
+      },
+    ]
+    Application.insert({
+      data: data,
+    })
+
+    Component.insert({
+      data: [
+        {
+          id: 1,
+          name: 'heading',
+          type: 'h1',
+        },
+        {
+          id: 2,
+          name: 'paragraph',
+          type: 'p',
+        },
+        {
+          id: 3,
+          name: 'input text',
+          type: 'input',
+        },
+      ],
+    })
+
+    Block.insert({
+      data: [
+        {
+          id: 1,
+          name: 'header',
+          blocks_components: [
+            {
+              id: 1,
+              component_id: 1,
+              order: 1,
+              content: 'heading of block 1',
+            },
+            {
+              id: 2,
+              component_id: 2,
+              order: 2,
+              content: 'hello, you are reading block 1',
+            },
+          ],
+        },
+        {
+          id: 2,
+          name: 'text',
+          blocks_components: [
+            {
+              id: 3,
+              component_id: 2,
+              order: 1,
+              content: 'this is block 2',
+            },
+          ],
+        },
+        {
+          id: 3,
+          name: 'input form',
+          blocks_components: [
+            {
+              id: 4,
+              component_id: 2,
+              order: 1,
+              content: 'input form',
+            },
+            {
+              id: 5,
+              component_id: 3,
+              order: 2,
+              content: '',
+              attrs: '{"type": "number", "placeholder":"number"}',
+            },
+          ],
+        },
+      ],
+    })
+  },
   page: {
     // All subcomponent titles will be injected into this template.
     titleTemplate(title) {

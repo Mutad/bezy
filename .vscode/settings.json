@@ -43,7 +43,7 @@
     "vue-html",
     "html"
   ],
-  "vetur.format.enable": false,
+  "vetur.format.enable": true,
   "vetur.completion.scaffoldSnippetSources": {
     "user": "🗒️",
     "workspace": "💼",
@@ -69,8 +69,8 @@
 
   "jest.autoEnable": false,
   "jest.enableCodeLens": false,
-  "javascript.format.enable": false,
-  "json.format.enable": false,
+  "javascript.format.enable": true,
+  "json.format.enable": true,
   "vetur.validation.script": false,
 
   // ===
