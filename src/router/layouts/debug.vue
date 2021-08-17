@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div v-show="false" class="container">
     <div class="wrapper">
       <span>DEBUG ENABLED</span>
       <button class="btn" @click="show = !show">{{

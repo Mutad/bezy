@@ -10,8 +10,9 @@ import Endpoint from './models/Endpoint'
 import Page from './models/Page'
 import Block from './models/Block'
 import Component from './models/Component'
-import BlockComponent from './models/BlockComponent'
+import ChildBlock from './models/ChildBlock'
 import BlockPage from './models/BlockPage'
+import Element from './models/Element'
 
 Vue.use(Vuex)
 
@@ -23,8 +24,9 @@ database.register(Endpoint)
 database.register(Page)
 database.register(Block)
 database.register(Component)
-database.register(BlockComponent)
+database.register(ChildBlock)
 database.register(BlockPage)
+database.register(Element)
 
 const store = new Vuex.Store({
   plugins: [VuexORM.install(database)],

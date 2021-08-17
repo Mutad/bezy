@@ -10,11 +10,12 @@ export default {
     title: 'Page',
     meta: [{ name: 'description', content: 'The Page page.' }],
   },
+  // eslint-disable-next-line vue/no-unused-components
   components: { Layout, Debug, BlockRenderer, draggable },
   computed: {
     page() {
       return Page.query()
-        .withAllRecursive()
+        .withAllRecursive(10)
         .find(this.$route.params.id)
     },
   },
@@ -30,12 +31,13 @@ export default {
       </pre>
     </Debug>
     <h3>{{ page.name }}</h3>
-    <draggable>
-      <BlockRenderer
-        v-for="blockPage in page.blocks_pages"
-        :key="blockPage.id"
-        :block="blockPage.block"
-      />
-    </draggable>
+    <!-- <pre>{{ page }}</pre> -->
+    <BlockRenderer
+      v-for="blockPage in page.blocks_pages"
+      :key="blockPage.id"
+      :block="blockPage.block"
+    />
+    <!-- <draggable>
+    </draggable> -->
   </Layout>
 </template>

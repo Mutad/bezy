@@ -1,8 +1,8 @@
 <script>
 import appConfig from '@src/app.config'
 import Application from './state/models/Application'
-import Component from './state/models/Component'
 import Block from './state/models/Block'
+import Element from './state/models/Element'
 
 export default {
   mounted() {
@@ -16,9 +16,9 @@ export default {
             name: 'Page 1',
             application_id: 1,
             blocks_pages: [
-              { id: 1, block_id: 1, order: 1 },
-              { id: 2, block_id: 2, order: 2 },
-              { id: 3, block_id: 3, order: 3 },
+              { id: 3, block_id: 3, order: 1 },
+              { id: 1, block_id: 1, order: 2 },
+              { id: 2, block_id: 2, order: 3 },
             ],
           },
           { id: 2, name: 'Page 2', application_id: 1 },
@@ -48,22 +48,45 @@ export default {
       data: data,
     })
 
-    Component.insert({
+    Element.insert({
       data: [
         {
           id: 1,
           name: 'heading',
           type: 'h1',
+          children: [
+            {
+              id: 1,
+              parent_id: 1,
+              parent_type: 'elements',
+              child_id: 4,
+              child_type: 'elements',
+            },
+          ],
         },
         {
           id: 2,
           name: 'paragraph',
           type: 'p',
+          children: [
+            {
+              id: 2,
+              parent_id: 2,
+              parent_type: 'elements',
+              child_id: 4,
+              child_type: 'elements',
+            },
+          ],
         },
         {
           id: 3,
           name: 'input text',
           type: 'input',
+        },
+        {
+          id: 4,
+          name: 'static text',
+          type: 'text',
         },
       ],
     })
@@ -72,50 +95,47 @@ export default {
       data: [
         {
           id: 1,
-          name: 'header',
-          blocks_components: [
+          name: 'text',
+          children: [
             {
-              id: 1,
-              component_id: 1,
-              order: 1,
-              content: 'heading of block 1',
+              id: 3,
+              parent_id: 1,
+              parent_type: 'blocks',
+              child_id: 2,
+              child_type: 'elements',
             },
             {
-              id: 2,
-              component_id: 2,
-              order: 2,
-              content: 'hello, you are reading block 1',
+              id: 4,
+              parent_id: 1,
+              parent_type: 'blocks',
+              child_id: 2,
+              child_type: 'blocks',
             },
           ],
         },
         {
           id: 2,
-          name: 'text',
-          blocks_components: [
+          name: 'input',
+          children: [
             {
-              id: 3,
-              component_id: 2,
-              order: 1,
-              content: 'this is block 2',
+              id: 5,
+              parent_id: 2,
+              parent_type: 'blocks',
+              child_id: 3,
+              child_type: 'elements',
             },
           ],
         },
         {
           id: 3,
-          name: 'input form',
-          blocks_components: [
+          name: 'heading',
+          children: [
             {
-              id: 4,
-              component_id: 2,
-              order: 1,
-              content: 'input form',
-            },
-            {
-              id: 5,
-              component_id: 3,
-              order: 2,
-              content: '',
-              attrs: '{"type": "number", "placeholder":"number"}',
+              id: 6,
+              parent_id: 3,
+              parent_type: 'blocks',
+              child_id: 1,
+              child_type: 'elements',
             },
           ],
         },
